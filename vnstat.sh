@@ -10,34 +10,29 @@
 #   \_/ |_|\__,_|\__,_|_|\___/|___/_|____/ 
 
 
+iface=eth0                      # Сетевой интерфейс для сбора статистики
+chatID=11111                    # ID чата куда отправлять сообщение
+botToken=123456789:AAH_OQTbC9wWTlhiMuAupaoetOhvlad                  # Токен Telegram-бота (получаем у @Botfather)
+
+photo_s="$HOME/tgvn.png"
+photo_d="$HOME/tgvnd.png"
+MESSAGE_s="Суммарная статистика"
+MESSAGE_d="Статистика за день"
+
 # Обновляем БД vnstat'a
 vnstat -u
 # Генерируем суммарную картинку
-vnstati -s -i eth0 -o ~/tgvn.png
+vnstati -s -i "$iface" -o "$photo_s"
 # Генерируем картинку за текущий день
-vnstati -d -i eth0 -o ~/tgvnd.png
+vnstati -d -i "$iface" -o "$photo_d"
 
 echo "[--------------------------------[`date +%F-%H-%M`]--------------------------------]"
 echo "Готовлю пост в Telegram"
 
-chatID=11111                    # ID чата куда отправлять сообщение
-botToken=123456789:AAH_OQTbC9wWTlhiMuAupaoetOhvlad                  # Токен Telegram-бота (получаем у @Botfather)
-
-photo_s="tgvn.png"
-photo_d="tgvnd.png"
-MESSAGE_s="Суммарная статистика"
-MESSAGE_d="Статистика за день"
-
-shift
-(
- for x
- do
-  echo $x
- done
-)|curl -s "https://api.telegram.org/bot"$botToken"/sendPhoto" -F chat_id=$chatID -F "photo=@$photo_s" -F "caption=$MESSAGE_s"
+curl -s "https://api.telegram.org/bot$botToken/sendPhoto" -F chat_id="$chatID" -F "photo=@$photo_s" -F "caption=$MESSAGE_s"
 sleep 1;
 # Отправляем вторую картинку
-curl -s "https://api.telegram.org/bot"$botToken"/sendPhoto" -F chat_id=$chatID -F "photo=@$photo_d" -F "caption=$MESSAGE_d"
+curl -s "https://api.telegram.org/bot$botToken/sendPhoto" -F chat_id="$chatID" -F "photo=@$photo_d" -F "caption=$MESSAGE_d"
 
 echo "Изображения в Telegram отправлены"
 
