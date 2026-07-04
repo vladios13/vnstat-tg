@@ -1,6 +1,10 @@
 # vnstat-tg
 Простой скрипт, отправляющий статистику трафика и график его использования в Telegram.
 
+![License](https://img.shields.io/badge/License-MIT-green)
+![Shell](https://img.shields.io/badge/Shell-Bash-4EAA25?logo=gnu-bash&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Linux-FCC624?logo=linux&logoColor=black)
+
 ### Возможности
 
 - Простая настройка.
@@ -41,10 +45,8 @@ apt-get install vnstat
 ------------
 
 
-### vladios13
-[Блог vladios13](https://blog.vladios13.com)
+## Автор — vladios13
 
-[Telegram](https://t.me/vladios13blog)
-
-Для пожертвований:
-- [Yoomoney](https://yoomoney.ru/to/410011568729023 "Yoomoney")
+[![Блог](https://img.shields.io/badge/Блог-vladios13-blue)](https://blog.vladios13.com)
+[![Telegram](https://img.shields.io/badge/Telegram-@vladios13blog-26A5E4)](https://t.me/vladios13blog)
+[![ЮMoney](https://img.shields.io/badge/Поддержать-ЮMoney-yellow)](https://yoomoney.ru/to/410011568729023)
